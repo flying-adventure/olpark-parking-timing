@@ -12,8 +12,8 @@
   --accent: #0f6b4a;
   --series-1: #12805a;      /* 주차 중 · 입차 · 2025 */
   --series-1-soft: #c9e6d8; /* 최소~최대 범위 */
-  --series-2: #c2552d;      /* 출차 · 2024 */
-  --series-3: #7b879c;      /* 2023 */
+  --series-2: #e09a2b;      /* 출차 · 2024. 초록과 밝기 차이가 크게 */
+  --series-3: #6c7a94;      /* 2023 */
   --good: #1b9a57;
   --warning: #e0a013;
   --serious: #e0703f;
@@ -32,9 +32,9 @@
     --text-2: #b8c4bb;
     --text-3: #909d94;
     --accent: #3fbf8f;
-    --series-1: #37b888;
+    --series-1: #2fa97c;
     --series-1-soft: #1c5943;
-    --series-2: #e0764d;
+    --series-2: #f4c66a;
     --series-3: #8793a8;
     --heat-rgb: 55, 184, 136;
     --shadow: 0 18px 40px -24px rgba(0, 0, 0, .7);
