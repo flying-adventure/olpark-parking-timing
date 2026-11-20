@@ -1,4 +1,4 @@
-/* 올팍 주차 타이밍 — 빌드 도구 없이 동작하는 순수 자바스크립트.
+/* 올팍 주차 타이밍: 빌드 도구 없이 동작하는 순수 자바스크립트.
    데이터는 data/data.js 가 window.OLPARK_DATA 로 넣어 준다(tools/build_data.py 산출물). */
 (function (root) {
   'use strict';
@@ -266,7 +266,7 @@
       '<li>가장 붐볐던 ' + wd.label + '요일에는 머무는 동안 <b>' + num(p.worst) + '대</b>(' + pctTxt(p.worst / CAPACITY) + ', ' + worstLv.name +
       ')까지 찼습니다. 공연·행사가 있는 날은 평균보다 이 값에 가깝다고 보는 편이 안전합니다.</li>' +
       '<li>나가는 <b>' + slotLabel(p.leaveSlot, F.slotMin) + '</b>쯤 ' + leaveH + '시대에는 한 시간에 평균 <b>' + num(p.leaveExits) + '대</b>가 빠져나갑니다' +
-      (leaveH === exitH ? ' — ' + wd.label + '요일 중 출차가 가장 몰리는 시간대입니다.' : '. ' + wd.label + '요일 출차가 가장 몰리는 때는 ' + exitH + '시대(' + num(wd.exits[exitH]) + '대)입니다.') + '</li>';
+      (leaveH === exitH ? '. ' + wd.label + '요일 중 출차가 가장 몰리는 시간대입니다.' : '. ' + wd.label + '요일 출차가 가장 몰리는 때는 ' + exitH + '시대(' + num(wd.exits[exitH]) + '대)입니다.') + '</li>';
     if (b && b.slot !== state.arr && p.peak - b.peak >= 0.03 * CAPACITY) {
       html += '<li>앞뒤 2시간 안에서는 <b>' + slotLabel(b.slot, F.slotMin) + '</b> 도착이 가장 한산했습니다(머무는 동안 최고 ' + num(b.peak) + '대, ' +
               pctTxt(b.peak / CAPACITY) + '). 지금 선택보다 ' + num(p.peak - b.peak) + '대 적습니다.</li>';
@@ -309,7 +309,7 @@
       var z = Z.zones.filter(function (x) { return x.zone === name; })[0];
       if (!z) return '';
       var st = zoneStats(z, arrHour);
-      return '<li><b>' + esc(name) + '</b>' + (GATES[name] ? ' (' + GATES[name] + ' 진입)' : '') + ' — 기록 ' + st.total + '건 중 만차 <b>' + st.full + '건</b>(' +
+      return '<li><b>' + esc(name) + '</b>' + (GATES[name] ? ' (' + GATES[name] + ' 진입)' : '') + ': 기록 ' + st.total + '건 중 만차 <b>' + st.full + '건</b>(' +
         pctTxt(st.fullShare) + '). 만차 기록의 <b>' + pctTxt(st.beforeShare) + '</b>가 ' + arrHour + '시대까지 찍혔고, 가운데 시각은 ' +
         Math.floor(z.fullMedianHour) + '시대입니다.</li>';
     }).join('');
@@ -383,7 +383,7 @@
     ];
     $('srcList').innerHTML = src.map(function (s) {
       return '<li><a href="https://www.data.go.kr/data/' + s[1] + '/fileData.do" target="_blank" rel="noopener">한국체육산업개발주식회사_' + s[0] +
-             '</a> (공공데이터포털 파일데이터) — ' + s[2] + '</li>';
+             '</a> (공공데이터포털 파일데이터): ' + s[2] + '</li>';
     }).join('') +
       '<li>수용 대수 2,200대, 혼잡 구간, 목적지별 주차구역·주차 가능 대수: <a href="https://www.ksponco.or.kr/olympicpark/parkingInfo?mid=a20111000000" target="_blank" rel="noopener">올림픽공원 홈페이지 주차 안내</a> (2026-11-20 확인)</li>';
     $('limits').innerHTML = [
