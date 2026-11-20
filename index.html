@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>올팍 주차 타이밍</title>
+<meta name="description" content="올림픽공원 입출차 기록 21만 건으로 본 요일·시간대별 주차장 붐빔과 구역별 만차 기록">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <p class="eyebrow">한국체육산업개발(주) 공공데이터 활용</p>
+  <h1>올팍 주차 타이밍</h1>
+  <p class="lead">올림픽공원 주차장(동2문·남2문·북2문)에 실제로 드나든 차량 기록 <strong id="hdRows"></strong>건으로, 요일과 시각별로 얼마나 차 있었는지 보여 줍니다.</p>
+</header>
+
+<main>
+  <section class="card" aria-labelledby="planTitle">
+    <h2 id="planTitle">언제 갈까</h2>
+    <form id="plan" class="controls">
+      <label>요일
+        <select id="wd"></select>
+      </label>
+      <label>도착 시각
+        <select id="arr"></select>
+      </label>
+      <label>머무는 시간
+        <select id="stay"></select>
+      </label>
+    </form>
+    <div id="result" class="result" aria-live="polite"></div>
+    <p class="note" id="planNote"></p>
+  </section>
+
+  <section class="card" aria-labelledby="dayTitle">
+    <h2 id="dayTitle"><span id="dayWd"></span>요일 하루 흐름</h2>
+    <h3>주차 중인 차량 수 <span class="unit">(대, 30분 간격)</span></h3>
+    <p class="legend" id="occLegend">
+      <span><i class="sw line"></i>같은 요일 평균</span>
+      <span><i class="sw band"></i>가장 한산했던 날 ~ 가장 붐볐던 날</span>
+      <span><i class="sw cap"></i>수용 가능 2,200대</span>
+    </p>
+    <div class="chart" id="occChart"></div>
+    <details>
+      <summary>표로 보기</summary>
+      <div class="tablewrap"><table id="occTable"></table></div>
+    </details>
+
+    <h3>시간대별 들어온 차·나간 차 <span class="unit">(대/시간, 같은 요일 평균)</span></h3>
+    <p class="legend">
+      <span><i class="sw in"></i>입차</span>
+      <span><i class="sw out"></i>출차</span>
+    </p>
+    <div class="chart" id="flowChart"></div>
+    <p class="note" id="stayNote"></p>
+  </section>
+
+  <section class="card" aria-labelledby="zoneTitle">
+    <h2 id="zoneTitle">어느 구역이 먼저 차나</h2>
+    <label class="single">목적지
+      <select id="dest"></select>
+    </label>
+    <div id="zoneResult" class="zoneResult" aria-live="polite"></div>
+    <h3>구역별 ‘만차’ 기록 시각 <span class="unit">(건)</span></h3>
+    <div class="tablewrap"><table id="zoneTable" class="heat"></table></div>
+    <p class="note" id="zoneNote"></p>
+  </section>
+
+  <section class="card" aria-labelledby="monthTitle">
+    <h2 id="monthTitle">달마다 얼마나 다른가</h2>
+    <div class="seg" role="group" aria-label="공원 선택" id="placeSeg"></div>
+    <h3>월별 주차 대수 <span class="unit">(대)</span></h3>
+    <p class="legend" id="monthLegend"></p>
+    <div class="chart" id="monthChart"></div>
+    <p class="note" id="monthNote"></p>
+  </section>
+
+  <section class="card" aria-labelledby="srcTitle">
+    <h2 id="srcTitle">데이터와 한계</h2>
+    <ul class="src" id="srcList"></ul>
+    <h3>알아 둘 점</h3>
+    <ul class="src" id="limits"></ul>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>2026년도 한국체육산업개발(주) 공공데이터 활용 경진대회 출품작 · 이 화면의 수치는 과거 기록의 요약이며 실시간 정보가 아닙니다.</p>
+</footer>
+
+<div id="tip" class="tip" role="status" hidden></div>
+
+<script src="data/data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
